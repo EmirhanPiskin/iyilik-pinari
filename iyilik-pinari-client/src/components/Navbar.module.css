@@ -1,0 +1,45 @@
+.navbar {
+    background-color: #F3F2EE !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07) !important;
+    color: #333 !important;
+    min-height: 90px !important;
+    display: flex;
+    justify-content: center;
+}
+
+.brand {
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+}
+
+.navLink {
+    background: transparent;
+    box-shadow: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px 16px;
+    position: relative;
+    border-radius: 12px;
+    transition: color 0.3s ease;
+}
+
+/* Sadece aktif olan linkin altındaki çizgi için stil */
+.activeText+.navLink::after,
+.navLink:hover::after {
+    transform: scaleX(1);
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 16px;
+    right: 16px;
+    width: calc(100% - 32px);
+    height: 2px;
+    background-color: #499E5D;
+    transition: transform 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: center;
+}

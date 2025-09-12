@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        /* Projenin Temel Ayarları */
+        "target": "ES2020", // Kodun hangi JavaScript versiyonuna derleneceği
+        "module": "NodeNext", // Modern Node.js modül sistemi kullanılacak
+        "moduleResolution": "NodeNext", // Modüllerin nasıl bulunacağı (Hatanın çözümü!)
+        "outDir": "./dist", // Derlenmiş JavaScript dosyalarının konulacağı klasör
+        "rootDir": "./src", // TypeScript kaynak kodlarının ana klasörü
+        "esModuleInterop": true, // CommonJS ve ES modülleri arasında uyumluluk sağlar
+        "forceConsistentCasingInFileNames": true, // Dosya adı büyük/küçük harf tutarlılığını zorunlu kılar
+        /* Sıkı Tip Kontrolleri (En İyi Pratikler) */
+        "strict": true, // Tüm sıkı tip kontrolü kurallarını etkinleştirir
+        "skipLibCheck": true, // Kütüphane dosyalarının tip kontrolünü atlar, derlemeyi hızlandırır
+        "noImplicitAny": true // 'any' tipinin otomatik olarak kullanılmasını engeller
+    },
+    "include": [
+        "src/**/*"
+    ], // TypeScript derleyicisinin hangi dosyaları işleyeceğini belirtir
+    "exclude": [
+        "node_modules"
+    ] // Hangi dosyaların görmezden gelineceğini belirtir
+}
