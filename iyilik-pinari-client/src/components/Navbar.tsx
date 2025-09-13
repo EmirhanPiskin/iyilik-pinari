@@ -1,9 +1,50 @@
-import { AppBar, Toolbar, Box, Link, Button, useTheme, useMediaQuery, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Typography, Divider } from "@mui/material";
-import { NavLink } from "react-router-dom";
-import styles from './Navbar.module.css';
+import { AppBar, Toolbar, Box, Button, useTheme, useMediaQuery, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Typography, Divider } from "@mui/material";
+import { NavLink, type NavLinkProps } from "react-router-dom";
+import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
 import finalLogo from '../assets/iyilikpinarijustlogo.jpg';
+
+const StyledNavLink = styled(NavLink)<NavLinkProps>(({ theme }) => ({
+    background: 'transparent',
+    boxShadow: 'none',
+    fontSize: '16px',
+    padding: '8px 16px',
+    position: 'relative',
+    borderRadius: '12px',
+    textDecoration: 'none',
+    transition: 'color 0.3s ease',
+    color: '#333',
+
+    '&::after': {
+        content: "''", // 'content' özelliğini buraya taşıdık
+        position: 'absolute',
+        bottom: '-5px',
+        left: '16px',
+        right: '16px',
+        width: 'calc(100% - 32px)',
+        height: '2px',
+        backgroundColor: theme.palette.secondary.main,
+        transition: 'transform 0.3s ease', // Geçiş burada tanımlı
+        transform: 'scaleX(0)', // Başlangıç durumu: görünmez
+        transformOrigin: 'center',
+    },
+
+    '&:hover': {
+        color: theme.palette.secondary.main,
+        // Artık burada 'content' tanımlamaya gerek yok
+        '&::after': {
+            transform: 'scaleX(1)', // Bitiş durumu: görünür
+        }
+    },
+
+    '&.active': {
+        color: theme.palette.primary.main,
+        '&::after': {
+            transform: 'scaleX(0)',
+        }
+    },
+}));
 
 // Yönetimi kolaylaştırması için navigasyon linklerimizi bir dizi olarak tanımladık.
 const navLinks = [
@@ -56,16 +97,20 @@ const Navbar = () => {
         </Box>
     );
     return (
-        <AppBar position="static" className={styles.navbar}>
-            <Toolbar>
+        <AppBar position="static" sx={{ bgcolor: '#F3F2EE', color: '#333', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.07)', display: 'flex', justifyContent: 'center' }}>
+            <Toolbar sx={{ minHeight: '90px' }}>
                 {/* Logo Bölümü */}
-                <NavLink to="/" className={styles.brand}>
+                <NavLink to="/" style={{
+                    textDecoration: 'none',
+                    color: '#333',
+                    fontWeight: '700'
+                }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                         <img
                             src={finalLogo}
                             alt="İyilik Pınarı Yardım Derneği Logosu"
                             style={{
-                                height: '75px',
+                                height: '90px',
                                 display: 'block'
                             }}
                         />
@@ -106,26 +151,9 @@ const Navbar = () => {
                     // EĞER MASAÜSTÜ İSE:
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         {navLinks.map((link) => (
-                            <Link
-                                key={link.title}
-                                component={NavLink} // Bu kullanım, Material UI'ın Button bileşeninin tüm görsel özelliklerini korurken, arka planda React Router'ın NavLink işlevselliğini (doğru sayfaya yönlendirme) kullanmasını sağlar.
-                                to={link.path}
-                                underline="none"
-                                className={styles.navLink}
-                                sx={{
-                                    color: ({ isActive }: { isActive: boolean }) =>
-                                        isActive ? '#0F92CA' : '#333',
-                                    '&:hover': {
-                                        color: '#499E5D',
-                                    },
-                                }}
-                            >
-                                {({ isActive }) => (
-                                    <span className={isActive ? styles.activeText : ''}>
-                                        {link.title}
-                                    </span>
-                                )}
-                            </Link>
+                            <StyledNavLink key={link.title} to={link.path}>
+                                {link.title}
+                            </StyledNavLink>
                         ))}
                         <Button
                             component={NavLink}
