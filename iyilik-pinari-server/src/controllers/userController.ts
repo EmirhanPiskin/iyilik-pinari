@@ -23,10 +23,14 @@ export const createUser = async (req: Request, res: Response) => {
         const password_hash = await bcrypt.hash(password, salt);
         const newUser = new User({ username, password_hash, role: 'editor' });
         await newUser.save();
-        const userResponse = newUser.toObject();
-        delete userResponse.password_hash;
+
+        const userObject = newUser.toObject();
+        const { password_hash: _, ...userResponse } = userObject;
         res.status(201).json(userResponse);
-    } catch (error) { res.status(500).json({ message: "Kullanıcı oluşturulamadı." }); }
+
+    } catch (error) {
+        res.status(500).json({ message: "Kullanıcı oluşturulamadı." });
+    }
 };
 
 export const deleteUser = async (req: Request, res: Response) => {
