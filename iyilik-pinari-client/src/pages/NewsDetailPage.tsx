@@ -131,7 +131,7 @@ const NewsDetailPage = () => {
                         </Typography>
                         <Grid container spacing={2}>
                             {galleryImages.map((image, index) => (
-                                <Grid item key={index} xs={12} sm={6} md={4}>
+                                <Grid key={index} size={{ xs: 12, sm: 6, md: 4 }}>
                                     <Box
                                         component="img"
                                         src={`${API_BASE_URL}/${image}`}

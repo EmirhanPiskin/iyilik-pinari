@@ -92,7 +92,7 @@ const HomePage = () => {
                     </Typography>
                     <Grid container spacing={4}>
                         {featuredNews.map((newsItem) => (
-                            <Grid item key={newsItem._id} size={{ xs: 12, sm: 6, md: 4 }}>
+                            <Grid key={newsItem._id} size={{ xs: 12, sm: 6, md: 4 }}>
                                 <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', transition: '0.3s', '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 16px 40px rgba(0,0,0,0.12)' } }}>
                                     <CardMedia
                                         component="img"

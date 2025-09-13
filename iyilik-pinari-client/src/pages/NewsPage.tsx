@@ -59,7 +59,7 @@ const NewsPage = () => {
     const currentNews = news.slice(indexOfFirstItem, indexOfLastItem);
 
     // Pagination bileşeninde sayfa değiştirildiğinde çalışacak fonksiyon.
-    const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value); // State'i yeni sayfa numarası ile güncelle
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -104,7 +104,7 @@ const NewsPage = () => {
             <Container sx={{ py: 12 }}>
                 <Grid container spacing={5}>
                     {currentNews.map((newsItem) => (
-                        <Grid item key={newsItem._id} size={{ xs: 12 }}>
+                        <Grid key={newsItem._id} size={{ xs: 12 }}>
                             <Paper
                                 sx={{
                                     backgroundColor: "#F3F2EE",

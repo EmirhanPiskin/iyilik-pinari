@@ -68,10 +68,10 @@ const VolunteerPage = () => {
                 <Paper sx={{ p: { xs: 3, md: 5 }, borderRadius: '24px' }}>
                     <form onSubmit={handleSubmit(onValidSubmit)}>
                         <Grid container spacing={3}>
-                            <Grid item size={{ xs: 12 }}><TextField {...register("fullName")} required fullWidth label="Adınız Soyadınız" error={!!errors.fullName} helperText={errors.fullName?.message} /></Grid>
-                            <Grid item size={{ xs: 12, sm: 6 }}><TextField {...register("email")} required fullWidth label="E-posta Adresiniz" type="email" error={!!errors.email} helperText={errors.email?.message} /></Grid>
-                            <Grid item size={{ xs: 12, sm: 6 }}><TextField {...register("phone")} required fullWidth label="Telefon Numaranız" error={!!errors.phone} helperText={errors.phone?.message} /></Grid>
-                            <Grid item xs={12}>
+                            <Grid size={{ xs: 12 }}><TextField {...register("fullName")} required fullWidth label="Adınız Soyadınız" error={!!errors.fullName} helperText={errors.fullName?.message} /></Grid>
+                            <Grid size={{ xs: 12, sm: 6 }}><TextField {...register("email")} required fullWidth label="E-posta Adresiniz" type="email" error={!!errors.email} helperText={errors.email?.message} /></Grid>
+                            <Grid size={{ xs: 12, sm: 6 }}><TextField {...register("phone")} required fullWidth label="Telefon Numaranız" error={!!errors.phone} helperText={errors.phone?.message} /></Grid>
+                            <Grid size={{ xs: 12 }}>
                                 <Controller
                                     name="availability"
                                     control={control}
@@ -107,13 +107,13 @@ const VolunteerPage = () => {
                                     )}
                                 />
                             </Grid>
-                            <Grid item size={{ xs: 12 }}><TextField {...register("motivation")} required fullWidth label="Bize Neden Katılmak İstiyorsunuz?" multiline rows={5} error={!!errors.motivation} helperText={errors.motivation?.message} /></Grid>
-                            <Grid item size={{ xs: 12 }}>
+                            <Grid size={{ xs: 12 }}><TextField {...register("motivation")} required fullWidth label="Bize Neden Katılmak İstiyorsunuz?" multiline rows={5} error={!!errors.motivation} helperText={errors.motivation?.message} /></Grid>
+                            <Grid size={{ xs: 12 }}>
                                 <Button type="submit" disabled={isSubmitting} fullWidth variant="contained" size="large" sx={{ py: 1.5 }}>
                                     {isSubmitting ? 'Gönderiliyor...' : 'Başvurumu Gönder'}
                                 </Button>
                                 {submitMessage && (
-                                    <Grid item xs={12} sx={{ mt: 2, textAlign: 'center' }}>
+                                    <Grid size={{ xs: 12 }} sx={{ mt: 2, textAlign: 'center' }}>
                                         <Typography color={submitMessage.includes('hata') ? 'error' : 'success'}>
                                             {submitMessage}
                                         </Typography>
