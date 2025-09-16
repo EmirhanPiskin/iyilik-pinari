@@ -10,7 +10,7 @@ const NewsEditPage = () => {
     const { id } = useParams<{ id: string }>(); // URL'den haberin ID'sini alma
     const navigate = useNavigate();
     const { token } = useAuth();
-    const [error, setError] = useState<string | null>(null);
+    const [, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
     const [initialData, setInitialData] = useState<NewsFormInputs | undefined>(undefined);
     const [isSubmitting, setIsSubmitting] = useState(false);

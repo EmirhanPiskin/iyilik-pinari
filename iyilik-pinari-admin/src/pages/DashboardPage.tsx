@@ -17,7 +17,7 @@ interface Stats {
 }
 
 const StatCard = ({ title, value, icon }: { title: string; value: number; icon: React.ReactElement }) => (
-    <Grid item size={{ xs: 12, sm: 6, md: 4 }}>
+    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
         <Paper sx={{ p: 3, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderRadius: '16px' }}>
             <Box>
                 <Typography color="text.secondary">{title}</Typography>
@@ -67,7 +67,7 @@ const DashboardPage = () => {
 
             {/* SON GELENLER LİSTELERİ */}
             <Grid container spacing={4}>
-                <Grid item size={{ xs: 12, md: 6 }}>
+                <Grid size={{ xs: 12, md: 6 }}>
                     <Paper sx={{ p: 2, borderRadius: '16px' }}>
                         <Typography variant="h6" sx={{ p: 2 }}>Son Haberler</Typography>
                         <List>
@@ -85,7 +85,7 @@ const DashboardPage = () => {
                         </Box>
                     </Paper>
                 </Grid>
-                <Grid item size={{ xs: 12, md: 6 }}>
+                <Grid size={{ xs: 12, md: 6 }}>
                     <Paper sx={{ p: 2, borderRadius: '16px' }}>
                         <Typography variant="h6" sx={{ p: 2 }}>Son Mesajlar</Typography>
                         <List>
