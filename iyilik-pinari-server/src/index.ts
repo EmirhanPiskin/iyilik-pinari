@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
     'https://iyilik-pinari.vercel.app',
+    'https://iyilik-pinari-admin.vercel.app'
 ];
 const corsOptions = {
     origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
