@@ -18,7 +18,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
-    'https://iyilik-pinari.vercel.app',
+    'https://iyilik-pinari-git-main-emirhans-projects-7c718bb7.vercel.app/',
 ];
 const corsOptions = {
     origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
