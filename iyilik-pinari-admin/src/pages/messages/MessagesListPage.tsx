@@ -55,7 +55,7 @@ const MessagesListPage = () => {
     const fetchMessages = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:5000/api/messages', {
+            const response = await axios.get(`${API_BASE_URL}/api/messages`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setMessages(response.data);
@@ -73,7 +73,7 @@ const MessagesListPage = () => {
     const handleDelete = async (id: string) => {
         if (window.confirm("Bu mesajı silmek istediğinizden emin misiniz?")) {
             try {
-                await axios.delete(`http://localhost:5000/api/messages/${id}`, {
+                await axios.delete(`${API_BASE_URL}/api/messages/${id}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 fetchMessages();

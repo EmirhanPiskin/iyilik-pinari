@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../apiConfig';
 
 const LoginPage = () => {
     const { login } = useAuth();
@@ -23,7 +24,7 @@ const LoginPage = () => {
     const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
         setLoginError(null);
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login', data);
+            const response = await axios.post(`${API_BASE_URL}/api/auth/login`, data);
 
             const { token, user } = response.data;
             login(token, user);

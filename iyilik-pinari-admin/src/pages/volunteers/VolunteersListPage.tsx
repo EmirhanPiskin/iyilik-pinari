@@ -29,7 +29,7 @@ const VolunteersListPage = () => {
     const fetchVolunteers = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:5000/api/volunteers', {
+            const response = await axios.get(`${API_BASE_URL}/api/volunteers`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setVolunteers(response.data);
@@ -74,7 +74,7 @@ const VolunteersListPage = () => {
     const handleDelete = async (id: string) => {
         if (window.confirm("Bu başvuruyu silmek istediğinizden emin misiniz?")) {
             try {
-                await axios.delete(`http://localhost:5000/api/volunteers/${id}`, {
+                await axios.delete(`${API_BASE_URL}/api/volunteers/${id}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 fetchVolunteers();

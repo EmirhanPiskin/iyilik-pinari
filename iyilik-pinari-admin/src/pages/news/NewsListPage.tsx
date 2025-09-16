@@ -21,7 +21,7 @@ const NewsListPage = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/news');
+            const response = await axios.get(`${API_BASE_URL}/api/news`);
             setNews(response.data);
         } catch (error) {
             console.error("Haberler yüklenirken hata oluştu:", error);
@@ -37,7 +37,7 @@ const NewsListPage = () => {
     const handleDelete = async (id: string) => {
         if (window.confirm("Bu haberi silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.")) {
             try {
-                await axios.delete(`http://localhost:5000/api/news/${id}`, {
+                await axios.delete(`${API_BASE_URL}/api/news/${id}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 fetchNews();

@@ -19,7 +19,7 @@ const NewsEditPage = () => {
     useEffect(() => {
         const fetchNewsData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/news/${id}`);
+                const response = await axios.get(`${API_BASE_URL}/api/news/${id}`);
                 const news = response.data;
                 // Backend'den gelen dizi formatını, formun beklediği string formatına çevir
                 const formattedData = {

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
 import NewsForm, { type NewsFormInputs } from './NewsForm';
+import { API_BASE_URL } from '../../apiConfig';
 
 const NewsCreatePage = () => {
     const navigate = useNavigate();
@@ -32,7 +33,7 @@ const NewsCreatePage = () => {
         }
 
         try {
-            await axios.post('http://localhost:5000/api/news', formData, {
+            await axios.post(`${API_BASE_URL}/api/news`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`
