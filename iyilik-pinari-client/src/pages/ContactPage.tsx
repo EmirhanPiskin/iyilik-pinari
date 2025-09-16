@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { contactSchema, type ContactFormInputs } from './contactSchema';
 import axios from 'axios';
 import { useState } from 'react';
+import { API_BASE_URL } from '../apiConfig';
 
 const ContactPage = () => {
     // --- React Hook Form Kurulumu ---
@@ -29,7 +30,7 @@ const ContactPage = () => {
         setIsSubmitting(true);
         setSubmitMessage(null);
         try {
-            const response = await axios.post('http://localhost:5000/api/messages', data);
+            const response = await axios.post(`${API_BASE_URL}/api/messages`, data);
             // Başarılı olursa
             setSubmitMessage(response.data.message); // Backend'den gelen başarı mesajını göster
             reset();

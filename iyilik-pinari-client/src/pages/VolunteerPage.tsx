@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { volunteerSchema, type VolunteerFormInputs } from './volunteerSchema';
 import axios from 'axios';
 import { useState } from 'react';
+import { API_BASE_URL } from '../apiConfig';
 
 const availabilityOptions = ["Hafta İçi - Gündüz", "Hafta İçi - Akşam", "Hafta Sonu"];
 
@@ -30,7 +31,7 @@ const VolunteerPage = () => {
         setIsSubmitting(true);
         setSubmitMessage(null);
         try {
-            const response = await axios.post('http://localhost:5000/api/volunteers', data);
+            const response = await axios.post(`${API_BASE_URL}/api/volunteers`, data);
             setSubmitMessage(response.data.message);
             reset(); // Formu başarıyla gönderdikten sonra temizle
         } catch (error) {

@@ -22,7 +22,7 @@ const HomePage = () => {
     useEffect(() => {
         const fetchFeaturedNews = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/news');
+                const response = await axios.get(`${API_BASE_URL}/api/news`);
                 // Gelen tüm haberlerin sadece ilk 3'ünü alıp state'e kaydediyoruz.
                 setFeaturedNews(response.data.slice(0, 3));
             } catch (err) {

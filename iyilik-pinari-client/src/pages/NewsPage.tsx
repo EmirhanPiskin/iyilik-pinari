@@ -35,7 +35,7 @@ const NewsPage = () => {
             try {
                 setLoading(true); // Yükleme başlıyor
                 // Backend'deki API endpoint'imize GET isteği gönderiyoruz.
-                const response = await axios.get('http://localhost:5000/api/news');
+                const response = await axios.get(`${API_BASE_URL}/api/news`);
                 setNews(response.data); // Gelen veriyi state'e kaydediyoruz
                 setError(null); // Hata yok
             } catch (err) {
