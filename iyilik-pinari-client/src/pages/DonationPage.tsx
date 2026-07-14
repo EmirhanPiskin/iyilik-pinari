@@ -4,8 +4,8 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const bankInfo = {
-    iban: "TR12 3456 7890 1234 5678 9012 34",
-    accountHolder: "İyilik Pınarı Yardım Derneği"
+    iban: "TR15 0001 0005 3098 3632 8450 01",
+    accountHolder: "İYİLİK PINARI YARDIM DERNEĞİ"
 };
 
 const DonationPage = () => {
