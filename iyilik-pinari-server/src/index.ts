@@ -15,31 +15,31 @@ import dashboardRoutes from './routes/dashboardRoutes';
 import userRoutes from './routes/userRoutes';
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000; 
 
 const allowedOrigins = [
-    'https://iyilik-pinari.vercel.app',
-    'https://iyilik-pinari-admin.vercel.app'
+    'https://iyilikpinariyarder.com',
+    'https://www.iyilikpinariyarder.com',
+    'https://admin.iyilikpinariyarder.com' // Admin panelinin tam adresi
 ];
-const corsOptions = {
-    origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+
+const corsOptions: cors.CorsOptions = {
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
-            callback(new Error('Bu origin CORS tarafından engellendi.'));
+            callback(new Error('Bu alan adı CORS tarafından engellendi.'));
         }
     }
 };
-app.use(cors(corsOptions));
 
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
+// Rotalar
 app.get('/api', (req, res) => {
-    res.json({
-        message: "API çalışıyor...",
-        database_status: mongoose.connection.readyState === 1 ? "Bağlı" : "Bağlı Değil"
-    });
+    res.json({ message: "API çalışıyor...", db_status: mongoose.connection.readyState });
 });
 app.use('/api/news', newsRoutes);
 app.use('/api/auth', authRoutes);
@@ -48,12 +48,11 @@ app.use('/api/volunteers', volunteerRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/users', userRoutes);
 
+// Ana sunucu başlatma fonksiyonu
 const startServer = async () => {
     try {
         const mongoUri = process.env.MONGO_URI;
-        if (!mongoUri) {
-            throw new Error(".env dosyasında MONGO_URI bulunamadı!");
-        }
+        if (!mongoUri) { throw new Error(".env dosyasında MONGO_URI bulunamadı!"); }
 
         console.log("Veritabanına bağlanılıyor...");
         await mongoose.connect(mongoUri);
